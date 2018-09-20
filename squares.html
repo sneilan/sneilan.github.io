@@ -199,6 +199,10 @@ var GlobalVars = function() {
     this.backToHome = function() {
         window.location = '/';
     };
+
+    this.instagram = function() {
+        window.location = 'https://www.instagram.com/meowmixmachine/';
+    };
 };
 
 function getRandomSpeed() {
@@ -907,6 +911,7 @@ $(document).ready(function() {
 	var topSpeedController = gui.add(globalVars, 'topSpeed', 1, 50);
 	gui.add(globalVars, 'message');
 	gui.add(globalVars, 'backToHome');
+	gui.add(globalVars, 'instagram');
 
     function reRender() {
 		window.squares = {} 
