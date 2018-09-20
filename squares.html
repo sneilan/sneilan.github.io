@@ -195,14 +195,15 @@ var numSquares = 10;
 var GlobalVars = function() {
 	this.numSquares = 10;
     this.message = 'Press h hide/show this GUI';
-    this.topSpeed = 10;
+    this.topSpeed = .5;
     this.backToHome = function() {
         window.location = '/';
     };
 };
 
 function getRandomSpeed() {
-    return Math.random()//*(window.globalVars.topSpeed-0)+window.globalVars.topSpeed;
+    var topSpeed = window.globalVars.topSpeed / 100;
+    return Math.random()*(topSpeed-.3)+topSpeed;
 }
 
 var doCapture = false; //confirm('do you wish to capture the output?');
@@ -375,7 +376,7 @@ function createRotSquares() {
       square.speed = getRandomSpeed() / 2;
       square.speed *= last;
       last *= -1;
-      square.totalAngle = 0;
+      square.totalAngle = Math.random() * 365;
       //if (square.speed < 2)
       //square.speed = 2;
       square.width = Math.random() * 10;
@@ -396,7 +397,7 @@ function createRotSquares() {
       square.speed = getRandomSpeed() / 2;
       square.speed *= last;
       last *= -1;
-      square.totalAngle = 0;
+      square.totalAngle = Math.random() * 365;
       //if (square.speed < 2)
       //square.speed = 2;
       square.width = Math.random() * 10;
@@ -416,7 +417,7 @@ function createRotSquares() {
       square.speed = getRandomSpeed() / 2;
       square.speed *= last;
       last *= -1;
-      square.totalAngle = 0;
+      square.totalAngle = Math.random() * 365;
       //if (square.speed < 2)
       //square.speed = 2;
       square.width = Math.random() * 20;
@@ -903,7 +904,7 @@ $(document).ready(function() {
 	window.globalVars = new GlobalVars();
 	var gui = new dat.GUI();
 	var numSquaresController = gui.add(globalVars, 'numSquares', 1, 50);
-	var topSpeedController = gui.add(globalVars, 'topSpeed', 1, 2);
+	var topSpeedController = gui.add(globalVars, 'topSpeed', 1, 50);
 	gui.add(globalVars, 'message');
 	gui.add(globalVars, 'backToHome');
 
