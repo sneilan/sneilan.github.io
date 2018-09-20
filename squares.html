@@ -9,7 +9,7 @@
 	}
 </style>
 		<meta charset="UTF-8">
-		<title>Title of the document</title>
+		<title>Squares!!</title>
 	</head>
 	<body>
         <canvas id="blobs"></canvas>
@@ -20,6 +20,7 @@
         <script>
 
 // Note to readers from Sean. I apologize for the messiness of this code. I hacked this shit together in my senior year of college in a typography class.
+
 
 // Last updated September 2011 by Simon Sarris
 // www.simonsarris.com
@@ -194,7 +195,15 @@ var numSquares = 10;
 var GlobalVars = function() {
 	this.numSquares = 10;
     this.message = 'Press h hide/show this GUI';
+    this.topSpeed = 10;
+    this.backToHome = function() {
+        window.location = '/';
+    };
 };
+
+function getRandomSpeed() {
+    return Math.random()//*(window.globalVars.topSpeed-0)+window.globalVars.topSpeed;
+}
 
 var doCapture = false; //confirm('do you wish to capture the output?');
 var currentFrame = 0;
@@ -351,7 +360,11 @@ function createRotSquares() {
   // Maybe I'll call them cities, or websites..
   // and maybe there'll be really big ones too!
   // maybe it could be some kind of browser game where people place queens in strategic positions to maximize the number of squares they circumcise
+  var possibleYs = [];
   $.each(range(10 * diy, HEIGHT, 10 * diy), function(i, val) {
+	possibleYs.push(val);
+  });
+  $.each(shuffle(possibleYs), function(i, val) {
     var color = randColor();
     for (var j = 0; j < globalVars.numSquares; j++) {
       var square = {};
@@ -359,7 +372,7 @@ function createRotSquares() {
       square.y = val - 30;
       square.cx = x; // center x
       square.cy = val; // center y
-      square.speed = Math.random() / 2;
+      square.speed = getRandomSpeed() / 2;
       square.speed *= last;
       last *= -1;
       square.totalAngle = 0;
@@ -380,7 +393,7 @@ function createRotSquares() {
       square.y = val - 65;
       square.cx = x; // center x
       square.cy = val; // center y
-      square.speed = Math.random() / 2;
+      square.speed = getRandomSpeed() / 2;
       square.speed *= last;
       last *= -1;
       square.totalAngle = 0;
@@ -394,13 +407,13 @@ function createRotSquares() {
       rotSquares.push(square);
     }
 
-    for (var j = 0; j < 10; j++) {
+    for (var j = 0; j < globalVars.numSquares; j++) {
       var square = {};
       square.x = x;
       square.y = val - 100;
       square.cx = x; // center x
       square.cy = val; // center y
-      square.speed = Math.random() / 2;
+      square.speed = getRandomSpeed() / 2;
       square.speed *= last;
       last *= -1;
       square.totalAngle = 0;
@@ -866,15 +879,35 @@ window.runGrid = function(mini) {
   //}, 30);
 };
 
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
+
+
 $(document).ready(function() {
 	window.globalVars = new GlobalVars();
 	var gui = new dat.GUI();
-	var controller = gui.add(globalVars, 'numSquares', 1, 50);
+	var numSquaresController = gui.add(globalVars, 'numSquares', 1, 50);
+	var topSpeedController = gui.add(globalVars, 'topSpeed', 1, 2);
 	gui.add(globalVars, 'message');
+	gui.add(globalVars, 'backToHome');
 
-	controller.onFinishChange(function(value) {
-		globalVars.numSquares = parseInt(value);
-		// Fires when a controller loses focus.
+    function reRender() {
 		window.squares = {} 
 
 		window.squares.h = [];
@@ -884,10 +917,29 @@ $(document).ready(function() {
 
 		createSquares();
 		createRotSquares();
+    }
+
+	numSquaresController.onFinishChange(function(value) {
+		globalVars.numSquares = parseInt(value);
+        reRender();
+	});
+
+	topSpeedController.onFinishChange(function(value) {
+		globalVars.topSpeed = parseInt(value);
+        reRender();
 	});
 
 	runGrid(true);
 });
+        </script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126103476-1"></script>
+        <script>
+  window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+        gtag('config', 'UA-126103476-1');
         </script>
 	</body>
 </html>
