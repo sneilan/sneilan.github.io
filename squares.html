@@ -13,9 +13,14 @@
 	</head>
 	<body>
         <canvas id="blobs"></canvas>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.2/dat.gui.min.js"></script>
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js"></script>
 <script type="text/javascript" src="https://www.clicktorelease.com/code/conway3d_ccapture/js/CCapture.all.min.js"></script>
         <script>
+
+// Note to readers from Sean. I apologize for the messiness of this code. I hacked this shit together in my senior year of college in a typography class.
+
 // Last updated September 2011 by Simon Sarris
 // www.simonsarris.com
 // sarris@acm.org
@@ -184,7 +189,12 @@ var ctx = "derp";
 var canvas = "null";
 var grid = "derpderpderp";
 var dragging = false;
+
 var numSquares = 10;
+var GlobalVars = function() {
+	this.numSquares = 10;
+    this.message = 'Press h hide/show this GUI';
+};
 
 var doCapture = false; //confirm('do you wish to capture the output?');
 var currentFrame = 0;
@@ -311,7 +321,6 @@ function mainLoop() {
   drawGrid();
   drawSquares();
   drawRotSquares();
-  console.log('meow');
   if (doCapture) {
     currentFrame += 1;
     capturer.capture(canvas);
@@ -344,7 +353,7 @@ function createRotSquares() {
   // maybe it could be some kind of browser game where people place queens in strategic positions to maximize the number of squares they circumcise
   $.each(range(10 * diy, HEIGHT, 10 * diy), function(i, val) {
     var color = randColor();
-    for (var j = 0; j < 10; j++) {
+    for (var j = 0; j < globalVars.numSquares; j++) {
       var square = {};
       square.x = x;
       square.y = val - 30;
@@ -365,7 +374,7 @@ function createRotSquares() {
       rotSquares.push(square);
     }
 
-    for (var j = 0; j < 10; j++) {
+    for (var j = 0; j < globalVars.numSquares; j++) {
       var square = {};
       square.x = x;
       square.y = val - 65;
@@ -494,7 +503,7 @@ function createSquares() {
     var last = 1;
     var color = randColor();
     var track = [];
-    for (var j = 0; j < numSquares; j++) {
+    for (var j = 0; j < globalVars.numSquares; j++) {
       var square = {};
 
       square.width = getWidth();
@@ -525,7 +534,7 @@ function createSquares() {
     var last = 1;
     var color = randColor();
     var track = [];
-    for (var j = 0; j < numSquares; j++) {
+    for (var j = 0; j < globalVars.numSquares; j++) {
       var square = {};
       square.width = Math.random() * 4;
       if (square.width < 2)
@@ -844,7 +853,6 @@ window.runGrid = function(mini) {
   createRotSquares();
 
   drawGrid();
-  console.log('miao');
   //registerEventHandlers();
   if (doCapture) {
     window.capturer = new CCapture({
@@ -859,7 +867,26 @@ window.runGrid = function(mini) {
 };
 
 $(document).ready(function() {
-  runGrid(true);
+	window.globalVars = new GlobalVars();
+	var gui = new dat.GUI();
+	var controller = gui.add(globalVars, 'numSquares', 1, 50);
+	gui.add(globalVars, 'message');
+
+	controller.onFinishChange(function(value) {
+		globalVars.numSquares = parseInt(value);
+		// Fires when a controller loses focus.
+		window.squares = {} 
+
+		window.squares.h = [];
+		window.squares.v = [];
+
+		window.rotSquares = [];
+
+		createSquares();
+		createRotSquares();
+	});
+
+	runGrid(true);
 });
         </script>
 	</body>
