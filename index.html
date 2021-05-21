@@ -1,172 +1,952 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>Sean Neilan</title>
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-
+<style>
+	body {
+		overflow: hidden;
+		margin: 0;
+		padding: 0;
+	}
+</style>
+		<meta charset="UTF-8">
+		<title>Squares!!</title>
 	</head>
-
 	<body>
-		<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-			<h5 class="my-0 mr-md-auto font-weight-normal">Meow Mix Machine</h5>
-			<nav class="my-2 my-md-0 mr-md-3">
-				<a class="p-2 text-dark" data-toggle="tooltip" data-placement="top" title="5'11 160 lbs. Caucasian Male from Chicago, IL" href="#">Features</a>
-				<a class="p-2 text-dark" href="https://www.reddit.com/r/latestagecapitalism">Enterprise</a>
-				<a class="p-2 text-dark" href="#" data-toggle="modal" data-target="#supportModal">Support</a>
-				<a class="p-2 text-dark" href="https://www.youtube.com/watch?v=XwP0mulf_bs">Pricing</a>
-			</nav>
-			<a class="btn btn-outline-primary" href="https://instagram.com/meowmixmachine/">Sign up</a>
-		</div>
+        <canvas id="blobs"></canvas>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.2/dat.gui.min.js"></script>
 
-    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-      <h1 class="display-4">Sean Neilan</h1>
-      <p class="lead">Hi, I'm an artist and software engineer from Chicago, IL. I make cool stuff like <a href="https://www.instagram.com/p/BkmCmAiAlIt/?taken-by=meowmixmachine">algorithmic art</a> and drawings of the <a href="https://www.instagram.com/p/BZKILK0gr_2/?taken-by=meowmixmachine">human form</a>.</p>
-      <p class="lead">You can find some of my interactive art below.
-      Or check out my <a href="https://www.instagram.com/meowmixmachine/">instagram</a>.</p>
-    </div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js"></script>
+<script type="text/javascript" src="https://www.clicktorelease.com/code/conway3d_ccapture/js/CCapture.all.min.js"></script>
+        <script>
 
-    <div class="container">
-      <div class="card-deck mb-3 text-center">
-        <div class="card mb-4 shadow-sm">
-          <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Squares</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>A generative art piece with a lot of squares on it</li>
-			  <img width="100px" height="100px" src="/squares/squares.png" />
-              <li><a href="mailto:sean@seanneilan.com">Email support</a></li>
-              <li>Help center access</li>
-            </ul>
-
-			<a href="/squares.html">
-				<button type="button" class="btn btn-lg btn-block btn-primary">
-					Access the Squares
-				</button>
-			</a>
-          </div>
-        </div>
-
-        <div class="card mb-4 shadow-sm">
-          <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Pro</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">$0.00 <small class="text-muted">/ mo</small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>20 users included</li>
-              <li>10 GB of storage</li>
-              <li>Priority email support</li>
-              <li>Help center access</li>
-            </ul>
-            <button type="button" class="btn btn-lg btn-block btn-primary">Get started</button>
-          </div>
-        </div>
-        <div class="card mb-4 shadow-sm">
-          <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Enterprise</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">$00.00 <small class="text-muted">/ mo</small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>30 users included</li>
-              <li>15 GB of storage</li>
-              <li>Phone and email support</li>
-              <li>Help center access</li>
-            </ul>
-            <button type="button" class="btn btn-lg btn-block btn-primary">Contact us</button>
-          </div>
-        </div>
-      </div>
-
-      <footer class="pt-4 my-md-5 pt-md-5 border-top">
-        <div class="row">
-          <div class="col-12 col-md">
-            <img class="mb-2" src="../../assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
-            <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
-          </div>
-          <div class="col-6 col-md">
-            <h5>Features</h5>
-            <ul class="list-unstyled text-small">
-              <li><a class="text-muted" href="#">Cool stuff</a></li>
-              <li><a class="text-muted" href="#">Random feature</a></li>
-              <li><a class="text-muted" href="#">Team feature</a></li>
-              <li><a class="text-muted" href="#">Stuff for developers</a></li>
-              <li><a class="text-muted" href="#">Another one</a></li>
-              <li><a class="text-muted" href="#">Last time</a></li>
-            </ul>
-          </div>
-          <div class="col-6 col-md">
-            <h5>Resources</h5>
-            <ul class="list-unstyled text-small">
-              <li><a class="text-muted" href="#">Resource</a></li>
-              <li><a class="text-muted" href="#">Resource name</a></li>
-              <li><a class="text-muted" href="#">Another resource</a></li>
-              <li><a class="text-muted" href="#">Final resource</a></li>
-            </ul>
-          </div>
-          <div class="col-6 col-md">
-            <h5>About</h5>
-            <ul class="list-unstyled text-small">
-              <li><a class="text-muted" href="#">Team</a></li>
-              <li><a class="text-muted" href="#">Locations</a></li>
-              <li><a class="text-muted" href="#">Privacy</a></li>
-              <li><a class="text-muted" href="#">Terms</a></li>
-            </ul>
-          </div>
-        </div>
-      </footer>
-    </div>
+// Note to readers from Sean. I apologize for the messiness of this code. I hacked this shit together in my senior year of college in a typography class.
 
 
+// Last updated September 2011 by Simon Sarris
+// www.simonsarris.com
+// sarris@acm.org
+//
+// Free to use and distribute at will
+// So long as you are nice to people, etc
 
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-		<script type="text/javascript">
-$(function () {
-	$('[data-toggle="tooltip"]').tooltip()
-})
-		</script>
+// Simple class for keeping track of the current transformation matrix
 
-		<!-- Modal -->
-		<div class="modal fade" id="supportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Support Information</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-                        I pretty much love everybody.<br/><br/>
+// For instance:
+//    var t = new Transform();
+//    t.rotate(5);
+//    var m = t.m;
+//    ctx.setTransform(m[0], m[1], m[2], m[3], m[4], m[5]);
 
-                        I also like food a lot. Probably too much.<br /><br />
-                        <img width="50%" src="https://78.media.tumblr.com/e98bcfb84399b872a8b33f8da756925e/tumblr_pfbmcbdWai1u4z35y_640.jpg" />
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
-					</div>
-				</div>
-			</div>
-		</div>
+// Is equivalent to:
+//    ctx.rotate(5);
 
+// But now you can retrieve it :)
+
+// Remember that this does not account for any CSS transforms applied to the canvas
+
+function Transform() {
+  this.m = [1, 0, 0, 1, 0, 0];
+}
+
+Transform.prototype.reset = function() {
+  this.m = [1, 0, 0, 1, 0, 0];
+};
+
+Transform.prototype.multiply = function(matrix) {
+  var m11 = this.m[0] * matrix.m[0] + this.m[2] * matrix.m[1];
+  var m12 = this.m[1] * matrix.m[0] + this.m[3] * matrix.m[1];
+
+  var m21 = this.m[0] * matrix.m[2] + this.m[2] * matrix.m[3];
+  var m22 = this.m[1] * matrix.m[2] + this.m[3] * matrix.m[3];
+
+  var dx = this.m[0] * matrix.m[4] + this.m[2] * matrix.m[5] + this.m[4];
+  var dy = this.m[1] * matrix.m[4] + this.m[3] * matrix.m[5] + this.m[5];
+
+  this.m[0] = m11;
+  this.m[1] = m12;
+  this.m[2] = m21;
+  this.m[3] = m22;
+  this.m[4] = dx;
+  this.m[5] = dy;
+};
+
+Transform.prototype.invert = function() {
+  var d = 1 / (this.m[0] * this.m[3] - this.m[1] * this.m[2]);
+  var m0 = this.m[3] * d;
+  var m1 = -this.m[1] * d;
+  var m2 = -this.m[2] * d;
+  var m3 = this.m[0] * d;
+  var m4 = d * (this.m[2] * this.m[5] - this.m[3] * this.m[4]);
+  var m5 = d * (this.m[1] * this.m[4] - this.m[0] * this.m[5]);
+  this.m[0] = m0;
+  this.m[1] = m1;
+  this.m[2] = m2;
+  this.m[3] = m3;
+  this.m[4] = m4;
+  this.m[5] = m5;
+};
+
+Transform.prototype.rotate = function(rad) {
+  var c = Math.cos(rad);
+  var s = Math.sin(rad);
+  var m11 = this.m[0] * c + this.m[2] * s;
+  var m12 = this.m[1] * c + this.m[3] * s;
+  var m21 = this.m[0] * -s + this.m[2] * c;
+  var m22 = this.m[1] * -s + this.m[3] * c;
+  this.m[0] = m11;
+  this.m[1] = m12;
+  this.m[2] = m21;
+  this.m[3] = m22;
+};
+
+Transform.prototype.rotateDegrees = function(angle) {
+  var rad = angle * Math.PI / 180;
+  var c = Math.cos(rad);
+  var s = Math.sin(rad);
+  var m11 = this.m[0] * c + this.m[2] * s;
+  var m12 = this.m[1] * c + this.m[3] * s;
+  var m21 = this.m[0] * -s + this.m[2] * c;
+  var m22 = this.m[1] * -s + this.m[3] * c;
+  this.m[0] = m11;
+  this.m[1] = m12;
+  this.m[2] = m21;
+  this.m[3] = m22;
+};
+
+Transform.prototype.translate = function(x, y) {
+  this.m[4] += this.m[0] * x + this.m[2] * y;
+  this.m[5] += this.m[1] * x + this.m[3] * y;
+};
+
+Transform.prototype.scale = function(sx, sy) {
+  this.m[0] *= sx;
+  this.m[1] *= sx;
+  this.m[2] *= sy;
+  this.m[3] *= sy;
+};
+
+Transform.prototype.transformPoint = function(px, py) {
+  var x = px;
+  var y = py;
+  px = x * this.m[0] + y * this.m[2] + this.m[4];
+  py = x * this.m[1] + y * this.m[3] + this.m[5];
+  return [px, py];
+};
+
+Transform.prototype.clone = function() {
+  var t = new Transform();
+  for (var i = 0; i < 6; i++) {
+    t.m[i] = this.m[i];
+  }
+  return t;
+};
+
+
+
+/* This program creates a grid 
+ * of window.WIDTH and window.HEIGHT
+ * at the id specified in S
+ *
+ * Import this file and call window.runGrid();
+ * window.runGrid also takes an optional boolean parameter called mini.
+ *
+ * example
+ * var mini = true;
+ * window.runGrid(mini);
+ *
+ * or
+ *
+ * window.runGrid(); // by default mini is false
+ *
+ * It has two modes
+ * mini = false && mini = true
+ *
+ * If mini is true, 
+ * 1) the canvas will not be adjusted when the user changes the size of the window.
+ * 2) no click events will be registered except to go to another page
+ *    specified by url.
+ *
+ * If mini is false,
+ * 1) the grid will always fill the user's window
+ * 2) Click events will be registered. same with scrolling.
+ *
+ */
+
+
+var S = {
+  CANVAS: "#blobs"
+};
+var WIDTH = 100;
+var HEIGHT = 100;
+var INTERVAL = 15;
+var HORIZONTAL_OFFSET = 0;
+var VERTICAL_OFFSET = 0;
+var TOTAL_DELTA = 0;
+var POINT = {};
+POINT.X = 50;
+POINT.Y = 50;
+POINT.DISPLAY = true;
+var ctx = "derp";
+var canvas = "null";
+var grid = "derpderpderp";
+var dragging = false;
+
+var numSquares = 10;
+var GlobalVars = function() {
+	this.numSquares = 10;
+    this.message = 'Press h hide/show this GUI';
+    this.topSpeed = .5;
+    this.backToHome = function() {
+        window.location = '/';
+    };
+
+    this.instagram = function() {
+        window.location = 'https://www.instagram.com/meowmixmachine/';
+    };
+};
+
+function getRandomSpeed() {
+    var topSpeed = window.globalVars.topSpeed / 100;
+    return Math.random()*(topSpeed-.3)+topSpeed;
+}
+
+var doCapture = false; //confirm('do you wish to capture the output?');
+var currentFrame = 0;
+var frameLimit = 100;
+
+// new vars from 
+// http://stackoverflow.com/questions/2916081/zoom-in-on-a-point-using-scale-and-translate
+var originx = 0;
+var originy = 0;
+var scale = 1;
+var mousex, mousey;
+
+var firstLoop = true;
+var xLast;
+var yLast;
+var mini = false;
+
+
+// How are we going to organize the data?
+/* var squares = [];
+ * horizontal vs vertical
+ * tracks organized by origin/ending point/vertical vs horizontal
+ * tracks should be in order they are displayed
+ * 
+ * How are we going to compute intersections with circley things?
+ * Each track should have a list of circly things it intersects with and at what points.
+ *
+ * When you zoom out, the track needs to expand & new squares must be created to fill the gap
+ * When you zoom in, the track needs to collapse & squares must be removed
+ * 40 squares per 1680 ish/1050ish
+ *
+ * Tracks will not be created and deleted as you zoom in and out. we'll just repeat them.
+ *
+ * Often, tracks won't need to be drawn depending on how zoomed in they are.
+ * 
+ * Each square must be checked every turn to see if it's colliding with a spinny thingy. If it is, 
+ *
+ * track = {}
+ * track.squares = []
+ * track.orient = H or track.orient = V; H = 0, V = 1
+ * track.length = WIDTH or HEIGHT depending on track.orient
+ *
+ * square = {};
+ * square.d = 0.0; // value from 0 to length describing where the square is currently.
+ * track.squares[0] = square;
+ * track
+ */
+
+
+var t = new Transform();
+
+function range(start, end, interval) {
+  if (interval == undefined)
+    interval = 1;
+  if (end == undefined) {
+    end = start;
+    start = 0;
+  }
+  var result = [];
+  for (var i = start; i < end; i += interval) {
+    result.push(i);
+  }
+  return result;
+};
+
+// Instance of Transform object
+var m;
+
+var ix1;
+var iy1;
+var ix2;
+var iy2;
+var dix;
+var diy;
+
+var h;
+var v;
+
+var x1, y1, x2, y2;
+
+// intervals between dark and light gray lines
+var bx1;
+var by1;
+var bx2;
+var by2;
+
+// Computes bx1, by1, bx2 & by2
+function computeTransform() {
+  m = t.m;
+
+  ix1 = 0 * m[0] + 0 * m[2] + m[4];
+  iy1 = 0 * m[1] + 0 * m[3] + m[5];
+  ix2 = INTERVAL * m[0] + INTERVAL * m[2] + m[4];
+  iy2 = INTERVAL * m[1] + INTERVAL * m[3] + m[5];
+  dix = ix2 - ix1; // lol.
+  diy = iy2 - iy1;
+
+  h = HORIZONTAL_OFFSET;
+  v = VERTICAL_OFFSET;
+
+  x1 = y1 = 0;
+  x1 += h;
+  y1 += v;
+
+  x2 = WIDTH;
+  x2 += h;
+
+  y2 = HEIGHT;
+  y2 += v;
+
+  bx1 = x1 * m[0] + y1 * m[2] + m[4];
+  by1 = x1 * m[1] + y1 * m[3] + m[5];
+  bx2 = x2 * m[0] + y2 * m[2] + m[4];
+  by2 = x2 * m[1] + y2 * m[3] + m[5];
+};
+
+function mainLoop() {
+  // clear the canvas
+  ctx.fillStyle = "white";
+  ctx.fillRect(0, 0, WIDTH, HEIGHT);
+
+  computeTransform();
+
+  drawGrid();
+  drawSquares();
+  drawRotSquares();
+  if (doCapture) {
+    currentFrame += 1;
+    capturer.capture(canvas);
+
+    if (currentFrame > frameLimit) {
+      capturer.stop();
+      capturer.save();
+      doCapture = false;
+    }
+  }
+  requestAnimationFrame(mainLoop);
+};
+
+var rotSquares = [];
+
+function createRotSquares() {
+  computeTransform();
+  var x = 10 * dix; // lol
+
+  var last = 1;
+  // solve an N queens problem to place the circular things in different places on the map
+  // and no two queens are less than 2 * 10 * dix away from each other
+  // also, draw the intersecting lines darker where there is a queen
+  // if a square intersects with a queen, it needs to join the queen's circle and then displace a square in the circle
+  // the displaced square goes into a random direction from where it started.
+  // we need all size squares traversing the entire map
+  // an effect needs to happen when a square intersects with a queen
+  // Maybe I'll call them cities, or websites..
+  // and maybe there'll be really big ones too!
+  // maybe it could be some kind of browser game where people place queens in strategic positions to maximize the number of squares they circumcise
+  var possibleYs = [];
+  $.each(range(10 * diy, HEIGHT, 10 * diy), function(i, val) {
+	possibleYs.push(val);
+  });
+  $.each(shuffle(possibleYs), function(i, val) {
+    var color = randColor();
+    for (var j = 0; j < globalVars.numSquares; j++) {
+      var square = {};
+      square.x = x;
+      square.y = val - 30;
+      square.cx = x; // center x
+      square.cy = val; // center y
+      square.speed = getRandomSpeed() / 2;
+      square.speed *= last;
+      last *= -1;
+      square.totalAngle = Math.random() * 365;
+      //if (square.speed < 2)
+      //square.speed = 2;
+      square.width = Math.random() * 10;
+      if (square.width < 2)
+        square.width = 2;
+
+      square.width = getWidth() * 2;
+      square.color = randColor();
+      rotSquares.push(square);
+    }
+
+    for (var j = 0; j < globalVars.numSquares; j++) {
+      var square = {};
+      square.x = x;
+      square.y = val - 65;
+      square.cx = x; // center x
+      square.cy = val; // center y
+      square.speed = getRandomSpeed() / 2;
+      square.speed *= last;
+      last *= -1;
+      square.totalAngle = Math.random() * 365;
+      //if (square.speed < 2)
+      //square.speed = 2;
+      square.width = Math.random() * 10;
+      if (square.width < 5)
+        square.width = 5;
+
+      square.color = randColor();
+      rotSquares.push(square);
+    }
+
+    for (var j = 0; j < globalVars.numSquares; j++) {
+      var square = {};
+      square.x = x;
+      square.y = val - 100;
+      square.cx = x; // center x
+      square.cy = val; // center y
+      square.speed = getRandomSpeed() / 2;
+      square.speed *= last;
+      last *= -1;
+      square.totalAngle = Math.random() * 365;
+      //if (square.speed < 2)
+      //square.speed = 2;
+      square.width = Math.random() * 20;
+      if (square.width < 8)
+        square.width = 8;
+      square.color = randColor();
+      rotSquares.push(square);
+    }
+
+    x += 2 * 10 * dix;
+  });
+};
+
+// e ^ (i*pi) + 1 = 0?
+function drawRotSquares() {
+  for (var i = 0; i < rotSquares.length; i++) {
+    rotSquares[i].totalAngle += rotSquares[i].speed;
+    var c = Math.cos(rotSquares[i].totalAngle);
+    var s = Math.sin(rotSquares[i].totalAngle);
+    var transX = rotSquares[i].cx - rotSquares[i].x;
+    var transY = rotSquares[i].cy - rotSquares[i].y;
+    var x = transX * c - transY * s;
+    var y = transX * s + transY * c;
+    x += rotSquares[i].cx;
+    y += rotSquares[i].cy;
+    ctx.fillStyle = rotSquares[i].color;
+    ctx.fillRect(bx1 + x, by1 + y, rotSquares[i].width, rotSquares[i].width);
+  }
+}
+
+var colors = [];
+colors[0] = "#800517"; // dark red
+colors[1] = "#41627e"; // dark blue
+colors[2] = "#fdd017"; // dark yellow
+colors[3] = "green";
+
+var hexChars = {};
+hexChars[0] = "0";
+hexChars[1] = "1";
+hexChars[2] = "2";
+hexChars[3] = "3";
+hexChars[4] = "4";
+hexChars[5] = "5";
+hexChars[6] = "6";
+hexChars[7] = "7";
+hexChars[8] = "8";
+hexChars[9] = "9";
+hexChars[10] = "A";
+hexChars[11] = "B";
+hexChars[12] = "C";
+hexChars[13] = "D";
+hexChars[14] = "E";
+hexChars[15] = "F";
+
+function randColor() {
+  /*
+    if (randColor.last == undefined) {
+      randColor.last = 0;
+    }
+    randColor.last += 1;
+    if (randColor.last > 3)
+      randColor.last = 0;
+
+    return colors[randColor.last];
+    */
+  var colors = ['blue', '#FFDF00', 'red', 'green'];
+  return colors[Math.floor(Math.random() * Math.floor(colors.length))];
+  /*
+  var r = parseInt(Math.random() * 16);
+  var g = parseInt(Math.random() * 16);
+  var b = parseInt(Math.random() * 16);
+  return "#" + hexChars[r] + hexChars[g] + hexChars[b];
+  */
+
+}
+
+function getWidth() {
+  var width = Math.random() * 4;
+  if (width < 2)
+    width = 2;
+  if (Math.random() * 20 > 19.5)
+    width = 7;
+  return width;
+}
+
+var squares = {};
+squares.h = [];
+squares.v = [];
+
+function createSquares() {
+  computeTransform();
+
+  var i = 0;
+  // create horizontal squares
+  $.each(range(by1, HEIGHT, diy), function(i, val) {
+    i++;
+    var last = 1;
+    var color = randColor();
+    var track = [];
+    for (var j = 0; j < globalVars.numSquares; j++) {
+      var square = {};
+
+      square.width = getWidth();
+
+      square.x = Math.random() * WIDTH;
+      square.y = val;
+
+      square.xvel = Math.random() * 15;
+
+      if (square.xvel < 2)
+        square.xvel = 2;
+
+      square.xvel *= last;
+      last *= -1;
+
+      square.yvel = 0;
+
+      square.color = color;
+      track.push(square);
+    }
+    squares.h.push(track);
+  });
+  i = 0;
+
+  // create vertical squares
+  $.each(range(bx1, WIDTH, dix), function(i, val) {
+    i++;
+    var last = 1;
+    var color = randColor();
+    var track = [];
+    for (var j = 0; j < globalVars.numSquares; j++) {
+      var square = {};
+      square.width = Math.random() * 4;
+      if (square.width < 2)
+        square.width = 2;
+      if (Math.random() * 20 > 19.5)
+        square.width = 7;
+
+      square.x = val;
+      square.y = Math.random() * HEIGHT;
+
+      square.xvel = 0;
+      square.yvel = Math.random() * 15;
+      if (square.yvel < 2)
+        square.yvel = 2;
+
+      square.yvel *= last;
+      last *= -1;
+
+      square.color = color;
+      track.push(square);
+    }
+    squares.v.push(track);
+  });
+
+  // SAVE!!
+  // these don't get executed unless we've zoomed a bit
+  /*
+  for (var val = by1; val > 0; val -= diy) {
+    var square = {};
+    square.x = Math.random() * WIDTH;
+    square.y = val;
+    square.width = Math.random() * 9;
+    if (square.width < 8.5)
+      square.width = 2;
+    square.xvel = square.width * 2;
+    square.yvel = 0;
+    if (Math.random() > .5)
+      square.xvel *= -1;
+    if (square.width > 5)
+      square.xvel *= 2;
+    square.color = "FF0000";
+    squares.push(square);
+  };
+
+  for (var val = bx1; val > 0; val -= dix) {
+    var square = {};
+    square.x = val;
+    square.y = Math.random() * HEIGHT;
+    square.width = Math.random() * 7;
+    square.xvel = 0;
+    square.yvel = square.width * 9;
+    if (square.width < 8.5)
+      square.width = 2;
+    if (square.width > 5)
+      square.yvel *= 2;
+    if (Math.random() > .5)
+      square.yvel *= -1;
+    square.color = "00FF00";
+    squares.push(square);
+  };
+  */
+};
+
+function drawSquares() {
+  // horizontal square scome first
+
+
+  /*
+  var last = 0;
+  for (var val = by1; val < HEIGHT; val += diy) {
+
+
+    ctx.moveTo(0, val+.5);
+    ctx.lineTo(WIDTH, val+.5);
+  };
+
+  for (var val = bx1; val < WIDTH; val += dix) {
+    ctx.moveTo(val + .5, 0);
+    ctx.lineTo(val + .5, HEIGHT);
+  };
+
+  for (var val = by1; val > 0; val -= diy) {
+    ctx.moveTo(0, val);
+    ctx.lineTo(WIDTH, val);
+  };
+
+  for (var val = bx1; val > 0; val -= dix) {
+    ctx.moveTo(val, 0);
+    ctx.lineTo(val, HEIGHT);
+  };*/
+
+  var last = 0;
+  for (var i = 0; i < squares.h.length; i++) {
+    var y = squares.h[i][0].y;
+    ctx.fillStyle = squares.h[i][0].color;
+    for (var j = 0; j < squares.h[i].length; j++) {
+      //ctx.fillStyle = squares.h[i][j].color;
+      //ctx.fillRect(squares.h[i][j].x-squares.h[i][j].width/2, squares.h[i][j].y-squares.h[i][j].width/2, squares.h[i][j].width, squares.h[i][j].width);
+      ctx.fillRect(bx1 + squares.h[i][j].x, by1 + y, squares.h[i][j].width, squares.h[i][j].width);
+      squares.h[i][j].x += squares.h[i][j].xvel;
+      //squares.h[i][j].y += squares.h[i][j].yvel;
+      if (squares.h[i][j].x < 0) squares.h[i][j].x = WIDTH;
+      if (squares.h[i][j].x > WIDTH) squares.h[i][j].x = 0;
+      //if (squares.h[i][j].y < 0) squares.h[i][j].y = HEIGHT;
+      //if (squares.h[i][j].y > HEIGHT) squares.h[i][j].y = 0;
+
+      // check if each square has collided with one of the rotating things
+      // if so, rotate it's velocity by 90 degrees & change it's color
+      // also, mark that it is being changed somehow
+    }
+  }
+
+  for (var i = 0; i < squares.v.length; i++) {
+    var x = squares.v[i][0].x;
+    ctx.fillStyle = squares.v[i][0].color;
+    for (var j = 0; j < squares.v[i].length; j++) {
+      //ctx.fillStyle = squares.v[i][j].color;
+      //ctx.fillRect(squares.v[i][j].x-squares.v[i][j].width/2, squares.v[i][j].y-squares.v[i][j].width/2, squares.v[i][j].width, squares.v[i][j].width);
+      ctx.fillRect(bx1 + x, by1 + squares.v[i][j].y, squares.v[i][j].width, squares.v[i][j].width);
+      //squares.v[i][j].x += squares.v[i][j].xvel;
+      squares.v[i][j].y += squares.v[i][j].yvel;
+      //if (squares.v[i][j].x < 0) squares.v[i][j].x = WIDTH;
+      //if (squares.v[i][j].x > WIDTH) squares.v[i][j].x = 0;
+      if (squares.v[i][j].y < 0) squares.v[i][j].y = HEIGHT;
+      if (squares.v[i][j].y > HEIGHT) squares.v[i][j].y = 0;
+
+      // check if each square has collided with one of the rotating things
+      // if so, rotate it's velocity by 90 degrees & change it's color
+      // also, mark that it is being changed somehow
+    }
+  }
+
+
+};
+
+function drawGrid() {
+  // draw gray lines
+  ctx.beginPath();
+  ctx.strokeStyle = "#e0e0e0";
+  ctx.strokeWidth = 1;
+
+  for (var val = by1 + diy; val < HEIGHT; val += diy) {
+    ctx.moveTo(0, val + .5);
+    ctx.lineTo(WIDTH, val + .5);
+  };
+
+  for (var val = bx1 + dix; val < WIDTH; val += dix) {
+    ctx.moveTo(val + .5, 0);
+    ctx.lineTo(val + .5, HEIGHT);
+  };
+
+  for (var val = by1; val > 0; val -= diy) {
+    ctx.moveTo(0, val);
+    ctx.lineTo(WIDTH, val);
+  };
+
+  for (var val = bx1; val > 0; val -= dix) {
+    ctx.moveTo(val, 0);
+    ctx.lineTo(val, HEIGHT);
+  };
+
+  ctx.closePath();
+  ctx.stroke();
+
+  // draw black lines
+  ctx.beginPath();
+  ctx.strokeStyle = "#b0b0b0";
+  ctx.strokeWidth = 1;
+
+
+  for (var val = by1 + 10 * diy; val < HEIGHT; val += 10 * diy) {
+    ctx.moveTo(0, val + .5);
+    ctx.lineTo(WIDTH, val + .5);
+  };
+
+  for (var val = bx1 + 10 * dix; val < WIDTH; val += 10 * dix) {
+    ctx.moveTo(val + .5, 0);
+    ctx.lineTo(val + .5, HEIGHT);
+  };
+
+  for (var val = by1; val > 0; val -= 10 * diy) {
+    ctx.moveTo(0, val);
+    ctx.lineTo(WIDTH, val);
+  };
+
+  for (var val = bx1; val > 0; val -= 10 * dix) {
+    ctx.moveTo(val, 0);
+    ctx.lineTo(val, HEIGHT);
+  };
+
+  ctx.closePath();
+  ctx.stroke();
+
+  ctx.save();
+};
+
+function registerEventHandlers() {
+  $(S.CANVAS).mousemove(function(e) {
+    var x, y;
+    if (firstLoop) {
+      firstLoop = false;
+      xLast = (e.pageX - e.target.offsetLeft);
+      yLast = (e.pageY - e.target.offsetTop);
+    }
+    if (dragging == true) {
+      x = (e.pageX - e.target.offsetLeft);
+      y = (e.pageY - e.target.offsetTop);
+
+      HORIZONTAL_OFFSET += (x - xLast) / scale;
+      VERTICAL_OFFSET += (y - yLast) / scale;
+
+      //drawGrid();
+
+      xLast = (e.pageX - e.target.offsetLeft);
+      yLast = (e.pageY - e.target.offsetTop);
+    };
+
+    xLast = (e.pageX - e.target.offsetLeft);
+    yLast = (e.pageY - e.target.offsetTop);
+  });
+
+  /*
+  $(document).keydown(function (e) {
+    if (e.keyCode == 37) { 
+      HORIZONTAL_OFFSET = (HORIZONTAL_OFFSET - 1);
+      if (HORIZONTAL_OFFSET > INTERVAL) { 
+        HORIZONTAL_OFFSET = (HORIZONTAL_OFFSET % INTERVAL);
+      };
+    };
+
+    if (e.keyCode == 39) { 
+      HORIZONTAL_OFFSET = (HORIZONTAL_OFFSET + 1);
+      if (HORIZONTAL_OFFSET > INTERVAL) { 
+        HORIZONTAL_OFFSET = (HORIZONTAL_OFFSET % INTERVAL);
+      };
+    };
+
+    if (e.keyCode == 38) { 
+      VERTICAL_OFFSET = (VERTICAL_OFFSET - 1);
+      if (VERTICAL_OFFSET > INTERVAL) { 
+        VERTICAL_OFFSET = (VERTICAL_OFFSET % INTERVAL);
+      };
+    };
+
+    if (e.keyCode == 40) { 
+      VERTICAL_OFFSET = (VERTICAL_OFFSET + 1);
+      if (VERTICAL_OFFSET > INTERVAL) { 
+        VERTICAL_OFFSET = (VERTICAL_OFFSET % INTERVAL);
+      };
+    };
+
+    drawGrid();
+  });
+  */
+
+  $(S.CANVAS).click(function(e) {
+    POINT.DISPLAY = true;
+    POINT.X = (e.pageX - e.target.offsetLeft);
+    POINT.Y = (e.pageY - e.target.offsetTop);
+    drawGrid();
+  });
+
+  $(S.CANVAS).mousedown(function(e) {
+    dragging = true;
+  });
+
+  $(S.CANVAS).mouseup(function(e) {
+    dragging = false;
+  });
+
+  $(S.CANVAS).mousewheel(function(objEvent, intDelta) {
+    mousex = objEvent.clientX - canvas.offsetLeft;
+    mousey = objEvent.clientY - canvas.offsetTop;
+
+    //var wheel = objEvent.wheelDelta/120;//n or -n
+    var wheel = intDelta / 120; //n or -n
+
+    var zoom = 1 + wheel / 2;
+
+    t.translate(originx, originy);
+    t.scale(zoom, zoom);
+    t.translate(-(mousex / scale + originx - mousex / (scale * zoom)), -(mousey / scale + originy - mousey / (scale * zoom)));
+
+    //drawGrid();
+
+    originx = (mousex / scale + originx - mousex / (scale * zoom));
+    originy = (mousey / scale + originy - mousey / (scale * zoom));
+
+    scale *= zoom;
+  });
+
+  $(window).resize(function() {
+    HEIGHT = $(window).height();
+    WIDTH = $(window).width() - 0;
+    canvas.width = WIDTH;
+    canvas.height = HEIGHT;
+    //drawGrid();
+  });
+}
+
+
+window.runGrid = function(mini) {
+  canvas = $(S.CANVAS)[0];
+  ctx = canvas.getContext("2d");
+
+  HEIGHT = $(window).height();
+  WIDTH = ($(window).width() - 0);
+  //HEIGHT = 1080;
+  //WIDTH = 1080;
+  canvas.width = WIDTH;
+  canvas.height = HEIGHT;
+  xLast = yLast = x1 = y1 = 400;
+  x2 = WIDTH - 400;
+  y2 = HEIGHT - 400;
+  createSquares();
+  createRotSquares();
+
+  drawGrid();
+  //registerEventHandlers();
+  if (doCapture) {
+    window.capturer = new CCapture({
+      format: 'webm'
+    });
+    capturer.start();
+  }
+
+  //setTimeout(function() {
+  mainLoop();
+  //}, 30);
+};
+
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
+
+
+$(document).ready(function() {
+	window.globalVars = new GlobalVars();
+	var gui = new dat.GUI();
+	var numSquaresController = gui.add(globalVars, 'numSquares', 1, 50);
+	var topSpeedController = gui.add(globalVars, 'topSpeed', 1, 50);
+	gui.add(globalVars, 'message');
+	gui.add(globalVars, 'backToHome');
+	gui.add(globalVars, 'instagram');
+
+    function reRender() {
+		window.squares = {} 
+
+		window.squares.h = [];
+		window.squares.v = [];
+
+		window.rotSquares = [];
+
+		createSquares();
+		createRotSquares();
+    }
+
+	numSquaresController.onFinishChange(function(value) {
+		globalVars.numSquares = parseInt(value);
+        reRender();
+	});
+
+	topSpeedController.onFinishChange(function(value) {
+		globalVars.topSpeed = parseInt(value);
+        reRender();
+	});
+
+	runGrid(true);
+});
+        </script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126103476-1"></script>
         <script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
+  window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-gtag('config', 'UA-126103476-1');
+        gtag('config', 'UA-126103476-1');
         </script>
-
 	</body>
 </html>
 
